@@ -1,5 +1,7 @@
 *.gz
 *.bam
+*.vcf
+*.bai
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
