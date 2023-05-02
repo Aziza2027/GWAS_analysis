@@ -1,0 +1,9 @@
+
+bcftools mpileup -d 1000 -f /home/cat/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta ./data/*.sorted.bam | bcftools call -mv -Ob -o ./variants/out_all.vcf.gz
+
+tabix ./variants/out_all.vcf.gz
+
+bcftools view -i 'TYPE="indel" & AN>4' ./variants/out_all.vcf.gz -o ./variants/INDEL.vcf
+bcftools view -e 'TYPE="indel" | AN<4' ./variants/out_all.vcf.gz -o ./variants/SNP.vcf
+
+
