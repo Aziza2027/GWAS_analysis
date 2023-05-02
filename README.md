@@ -1,8 +1,6 @@
 # GWAS_analysis
 
-
-
-![Schematic of a bioinformatics pipeline. Examples of the most commonly used publicly available software programs utilized at a particular step are in parentheses. The programs listed were the most commonly used in 2012 hematological malignancy sequencing analyses. These are only examples and are not intended to be an exhaustive list. The number of publicly available tools is rapidly expanding and review of these tools is beyond the scope of this report.](https://www.researchgate.net/profile/Esteban-Braggio/publication/250923605/figure/fig3/AS:271240841658370@1441680264158/Schematic-of-a-bioinformatics-pipeline-Examples-of-the-most-commonly-used-publicly.png)
+![IM](im.png)
 
 [Image source](https://www.researchgate.net/figure/Schematic-of-a-bioinformatics-pipeline-Examples-of-the-most-commonly-used-publicly_fig3_250923605)
 
