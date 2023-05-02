@@ -2,6 +2,7 @@
 
 ![IM](im.png)
 
+
 [Image source](https://www.researchgate.net/figure/Schematic-of-a-bioinformatics-pipeline-Examples-of-the-most-commonly-used-publicly_fig3_250923605)
 
 ## *What is Bioinformatics pipeline?*
