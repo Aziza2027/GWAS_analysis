@@ -48,7 +48,7 @@ Requirements:
  - Samtools 
  - BWA
  - Bcftools
-
+ - reference genome + dbSNP
 ## Step 1(Read Preprocessing)
 
 Put all of your *fastq.gz files to data folder and run:
