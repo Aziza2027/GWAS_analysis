@@ -1,7 +1,6 @@
 *.gz
 *.bam
 *.vcf
-*.bai
 GCF*
 *html
 *json
