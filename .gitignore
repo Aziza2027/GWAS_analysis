@@ -2,6 +2,7 @@
 *.bam
 *.vcf
 *.bai
+GCF*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

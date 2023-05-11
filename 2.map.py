@@ -2,7 +2,7 @@ import os
 
 from glob import glob
 
-reference = '/home/cat/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta'
+reference = './database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta'
 # Map the paired-end reads
 for file in glob("./data/*_trimmed_R1*"):
     # Extract the base of the filename

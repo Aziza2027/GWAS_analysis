@@ -1,5 +1,5 @@
 
-bcftools mpileup -d 1000 -f ./reference/GCF_000001405.40_GRCh38.p14_genomic.fasta ./data/*.sorted.bam | bcftools call -mv -Ob -o ./variants/out_all.vcf.gz
+bcftools mpileup -d 1000 -f ./database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta ./data/*.sorted.bam | bcftools call -mv -Ob -o ./variants/out_all.vcf.gz
 
 tabix ./variants/out_all.vcf.gz
 
