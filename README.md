@@ -48,6 +48,7 @@ Requirements:
  - Samtools 
  - BWA
  - Bcftools
+ - tabix
  - reference genome + dbSNP
 ## Step 1(Read Preprocessing)
 
