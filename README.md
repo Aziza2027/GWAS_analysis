@@ -83,3 +83,8 @@ Output is saved in `variants` folder(annotates only SNPs not INDELs, you have to
 ## Step 5(Fill Missing Genotypes)
 
 SOON...
+
+
+#### Links
+https://aziza-diabetes.netlify.app/
+
