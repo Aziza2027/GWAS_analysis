@@ -1,7 +1,7 @@
 bgzip ./variants/SNP.vcf
 tabix ./variants/SNP.vcf.gz
 
-bcftools annotate --annotations /home/cat/database/dbSNP/all_rs.vcf.gz --columns CHROM,ID,INFO ./variants/SNP.vcf.gz > ./variants/SNP_annotated.vcf
+bcftools annotate --annotations ./database/all_rs.vcf.gz --columns CHROM,ID,INFO ./variants/SNP.vcf.gz > ./variants/SNP_annotated.vcf
 bcftools view -e 'ID="."' ./variants/SNP_annotated.vcf > ./variants/SNP_annotated_only_with_id.vcf
 bcftools query -H -f '%CHROM %POS  %ID  %REF  %ALT [ %TGT]\n' ./variants/SNP_annotated_only_with_id.vcf -o ./variants/SNP_with_id.vcf
 rm ./variants/SNP_annotated_only_with_id.vcf
