@@ -1,8 +1,8 @@
 ##fileformat=VCFv4.2
 ##FILTER=<ID=PASS,Description="All filters passed">
-##bcftoolsVersion=1.13+htslib-1.13+ds
-##bcftoolsCommand=mpileup -d 1000 -f ./database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta ./data/1k_S23_L001.sorted.bam ./data/2kar_S58_L001.sorted.bam
-##reference=file://./database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta
+##bcftoolsVersion=1.17+htslib-1.17
+##bcftoolsCommand=mpileup -d 1000 -f /home/cat/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta ./data/162_S18_L001.sorted.bam ./data/178_S65_L001.sorted.bam ./data/9_S8_L001.sorted.bam
+##reference=file:///home/cat/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta
 ##contig=<ID=NC_000001.11,length=248956422>
 ##contig=<ID=NT_187361.1,length=175055>
 ##contig=<ID=NT_187362.1,length=32032>
@@ -719,8 +719,7 @@
 ##INFO=<ID=BQBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Base Quality Bias (closer to 0 is better)">
 ##INFO=<ID=MQSBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Mapping Quality vs Strand Bias (closer to 0 is better)">
 ##INFO=<ID=SCBZ,Number=1,Type=Float,Description="Mann-Whitney U-z test of Soft-Clip Length Bias (closer to 0 is better)">
-##INFO=<ID=FS,Number=1,Type=Float,Description="Phred-scaled p-value using Fisher's exact test to detect strand bias">
-##INFO=<ID=SGB,Number=1,Type=Float,Description="Segregation based metric.">
+##INFO=<ID=SGB,Number=1,Type=Float,Description="Segregation based metric, http://samtools.github.io/bcftools/rd-SegBias.pdf">
 ##INFO=<ID=MQ0F,Number=1,Type=Float,Description="Fraction of MQ0 reads (smaller is better)">
 ##FORMAT=<ID=PL,Number=G,Type=Integer,Description="List of Phred-scaled genotype likelihoods">
 ##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
@@ -728,8 +727,8 @@
 ##INFO=<ID=AN,Number=1,Type=Integer,Description="Total number of alleles in called genotypes">
 ##INFO=<ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
 ##INFO=<ID=MQ,Number=1,Type=Integer,Description="Average mapping quality">
-##bcftools_callVersion=1.13+htslib-1.13+ds
-##bcftools_callCommand=call -mv -Ob -o ./variants/out_all.vcf.gz; Date=Thu May 11 17:02:14 2023
-##bcftools_viewVersion=1.13+htslib-1.13+ds
-##bcftools_viewCommand=view -i 'TYPE="indel" & AN>4' -o ./variants/INDEL.vcf ./variants/out_all.vcf.gz; Date=Thu May 11 17:02:52 2023
-#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	./data/1k_S23_L001.sorted.bam	./data/2kar_S58_L001.sorted.bam
+##bcftools_callVersion=1.17+htslib-1.17
+##bcftools_callCommand=call -mv -Ob -o ./variants/out_all.vcf.gz; Date=Thu May 11 18:30:22 2023
+##bcftools_viewVersion=1.17+htslib-1.17
+##bcftools_viewCommand=view -i 'TYPE="indel" & AN>2' -o ./variants/INDEL.vcf ./variants/out_all.vcf.gz; Date=Thu May 11 18:30:46 2023
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	./data/162_S18_L001.sorted.bam	./data/178_S65_L001.sorted.bam	./data/9_S8_L001.sorted.bam

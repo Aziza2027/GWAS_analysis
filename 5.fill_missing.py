@@ -6,6 +6,8 @@ from sklearn.impute import KNNImputer
 from sklearn.preprocessing import OrdinalEncoder
 
 DATA_PATH = './variants/SNP_with_id.vcf'
+rs_max_missing = 70
+sample_max_missing = 40
 
 def fill(arr):
     imputer = KNNImputer(n_neighbors=10)
@@ -61,10 +63,10 @@ df = read_vcf(DATA_PATH)
 missing_rate_samples = ((df.isna().mean(axis=1) * 100).round(2)).sort_values(ascending=False)
 missing_rate_snps = ((df.isna().mean(axis=0) * 100).round(2)).sort_values(ascending=False)
 
-cols = missing_rate_snps[missing_rate_snps<30].index
+cols = missing_rate_snps[missing_rate_snps<rs_max_missing].index
 df = df.loc[:, cols[::-1]]
 
-rows = missing_rate_samples[missing_rate_samples<40].index
+rows = missing_rate_samples[missing_rate_samples<sample_max_missing].index
 print('Following samples are removed:\n',*df.index[~df.index.isin(rows)], sep='\n\t')
 df = df.loc[rows[::-1], :]
 
