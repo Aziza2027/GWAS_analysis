@@ -1,0 +1,7 @@
+bgzip ./variants/INDEL.vcf
+tabix -f ./variants/INDEL.vcf.gz
+
+bcftools annotate --annotations /home/cat/database/dbSNP/all_rs.vcf.gz --columns CHROM,ID,INFO ./variants/INDEL.vcf.gz > ./variants/INDEL_annotated.vcf
+bcftools view -e 'ID="."' ./variants/INDELnnotated.vcf > ./variants/INDEL_annotated_only_with_id.vcf
+bcftools query -H -f '%CHROM %POS  %ID  %REF  %ALT [ %TGT]\n' ./variants/INDEL_annotated_only_with_id.vcf -o ./variants/INDEL_with_id.vcf
+rm ./variants/INDEL_annotated_only_with_id.vcf

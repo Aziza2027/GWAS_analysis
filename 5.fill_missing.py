@@ -6,7 +6,7 @@ from sklearn.impute import KNNImputer
 from sklearn.preprocessing import OrdinalEncoder
 
 DATA_PATH = './variants/SNP_with_id.vcf'
-rs_max_missing = 70
+rs_max_missing = 30
 sample_max_missing = 40
 
 def fill(arr):
@@ -66,12 +66,15 @@ missing_rate_snps = ((df.isna().mean(axis=0) * 100).round(2)).sort_values(ascend
 cols = missing_rate_snps[missing_rate_snps<rs_max_missing].index
 df = df.loc[:, cols[::-1]]
 
-rows = missing_rate_samples[missing_rate_samples<sample_max_missing].index
+rows = list(missing_rate_samples[missing_rate_samples<sample_max_missing].index)
+if 'Undetermined' in rows:
+    rows.remove('Undetermined')
+
 print('Following samples are removed:\n',*df.index[~df.index.isin(rows)], sep='\n\t')
 df = df.loc[rows[::-1], :]
 
 filled = fill_categorical(df)
-filled.to_csv('./variants/filled.csv')
+
 
 
 def check_alleles(x):
@@ -80,8 +83,9 @@ def check_alleles(x):
         return x.name
 
 
-war_rs = filled.apply(check_alleles)
-print('\nWARNING!\nFollowing columns have more than 3 alleles:',*war_rs.unique(), sep='\n\t')
+war_rs = filled.apply(check_alleles).unique()[1:]
+filled.drop(columns=war_rs).to_csv('./variants/filled.csv')
+print('\nWARNING!\nFollowing columns have more than 3 alleles and they have been removed from final version of data:',*war_rs, sep='\n\t')
 
 print('Total number of samples:', filled.shape[0])
 print('Total number of SNPs:', filled.shape[1])
