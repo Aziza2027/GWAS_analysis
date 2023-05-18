@@ -78,8 +78,8 @@ filled = fill_categorical(df)
 
 
 def check_alleles(x):
-    l = len(x.unique())
-    if l > 3:
+    l = len(set(list(''.join(x))))
+    if l >= 3:
         return x.name
 
 
