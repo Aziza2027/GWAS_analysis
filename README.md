@@ -90,7 +90,23 @@ SOON...
 
 
 #### Links
-https://aziza-diabetes.netlify.app/
 <br>
-https://youtu.be/RSbNVv47EHM
+[Website](https://aziza-diabetes.netlify.app/) 
+
+[Video Tutorial](https://youtu.be/RSbNVv47EHM) 
+
+[GWAS results(INDELS)](https://drive.google.com/file/d/1eohdtdyZrF-Xog0zflciWzuxy2kYq7Cm/view?usp=sharing) 
+
+[GWAS results(SNPs)](https://docs.google.com/spreadsheets/d/1OIdxdldcfwFWI-uHqFqgwsSimjU7js34/edit?usp=share_link&ouid=112267455847643950553&rtpof=true&sd=true) 
+
+[GWAS results(Hardy-Weinberg Equilibrium)](https://drive.google.com/file/d/1ephEzd4ung1l5aFKupGyZW5X5AIgxI8s/view?usp=share_link) 
+
+[GWAS results(P-value)](https://drive.google.com/file/d/12k5GoLTlckXjSBJef40jBR2oq2phNwdY/view?usp=sharing) 
+
+[GWAS results(OR,CI)](https://drive.google.com/file/d/1PKaDUQjyc6-NDEtB8oMxD-kHix50X1PS/view?usp=sharing) for SNPs with P-value less than 0.05.
+
+[Excluded sampes + SNPs(2+alleles)](https://docs.google.com/document/d/1Q7PxEzHJMG7UideHzl2PTs6Em3BkV62mrLiwfAMiDR4/edit?usp=sharing) 
+
+
+
 
