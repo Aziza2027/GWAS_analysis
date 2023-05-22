@@ -86,10 +86,13 @@ Output is saved in `variants` folder(annotates only SNPs not INDELs, you have to
 
 ## Step 5(Fill Missing Genotypes)
 
-SOON...
+Run:
+-     python 5.fill_missing.py
+
+It fills missing values. Output files are saved in `variants` folder. `original.csv` original file with variants, `filled.csv` file with imputed genotypes.
 
 
-#### Links
+### Links
 
 
 [Website](https://aziza-diabetes.netlify.app) 
