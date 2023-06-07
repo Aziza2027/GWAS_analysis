@@ -111,6 +111,8 @@ It fills missing values. Output files are saved in `variants` folder. `original.
 
 [GWAS results(OR,CI)](https://drive.google.com/file/d/1PKaDUQjyc6-NDEtB8oMxD-kHix50X1PS/view?usp=sharing) for SNPs with P-value less than 0.05(codominant model).
 
+[GWAS results(P-value)](https://docs.google.com/spreadsheets/d/1lwYOIycMqoL9Km2Sd4-qq185JmZd25Iobf3VUXnWejs/edit?usp=drive_link) without HWE test
+
 [Excluded sampes + SNPs(2+alleles)](https://docs.google.com/document/d/1Q7PxEzHJMG7UideHzl2PTs6Em3BkV62mrLiwfAMiDR4/edit?usp=sharing) 
 
 
