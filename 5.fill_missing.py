@@ -39,10 +39,10 @@ def read_vcf(data_path, raw_vcf=True):
     df = pd.read_csv(data_path, delimiter=' ')
     id_col = df.iloc[:,0] + '_' + df.iloc[:, 1].astype(str)   
     cols = df.columns.to_list()[9:]
-    print(cols)
 
     df = df[['[3]ID',*cols]]
-    df.ID = id_col
+    print(id_col)
+    df['[3]ID'] = id_col.copy()
 
     def trans_col(col):
         try:
@@ -57,8 +57,7 @@ def read_vcf(data_path, raw_vcf=True):
     df = df.T.rename(columns=df.T.iloc[0]).drop(df.T.index[0]) 
     df = df.replace(['./.'], [np.nan]).apply(lambda x: x.str.replace('/', ''))
 
-    df.to_csv('./variants/original.csv')
-
+    df.to_csv('original_p001.csv')
     return df
 
 
@@ -88,7 +87,7 @@ def check_alleles(x):
 
 
 war_rs = filled.apply(check_alleles).unique()[1:]
-filled.drop(columns=war_rs).to_csv('./variants/filled.csv')
+filled.drop(columns=war_rs).to_csv('filled.csv')
 print('\nWARNING!\nFollowing columns have more than 3 alleles and they have been removed from final version of data:',*war_rs, sep='\n\t')
 
 print('Total number of samples:', filled.shape[0])
