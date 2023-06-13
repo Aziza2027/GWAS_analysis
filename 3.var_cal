@@ -12,4 +12,5 @@ tabix ./variants/out_all.vcf.gz
 bcftools view -i 'TYPE="indel" & AN>2' ./variants/out_all.vcf.gz -o ./variants/INDEL.vcf
 bcftools view -e 'TYPE="indel" | AN<2' ./variants/out_all.vcf.gz -o ./variants/SNP.vcf
 
+# bcftools query -H -f '%CHROM %POS  %ID  %REF  %ALT [ %TGT]\n' ./variants/SNP_annotated_only_with_id.vcf -o ./variants/SNP_with_id.vcf
 
