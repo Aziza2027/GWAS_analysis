@@ -1,6 +1,12 @@
 
-# bcftools mpileup -d 1000 -f /home/cat/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta ./data/*.sorted.bam | bcftools call -mv -Ob -o ./variants/out_all.vcf.gz
-bcftools mpileup -Ou -f /home/cat/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta ./data/*.sorted.bam | bcftools call -mv -Ob -g -o ./variants/calls.bcf
+# bcftools mpileup -d 1000 -f /home/cat/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta ./data/*.sorted.bam | bcftools call -mv -Ob -o ./variants/out_all.vcf.gz --annotate AD
+# bcftools mpileup -Ou -f /home/cat/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta ../diabetes/bam_files/*.sorted.bam | bcftools call -mv -Ob -o ./variants/calls.bcf
+# bcftools mpileup -d 1000 -f /home/cat/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta ./data/*.sorted.bam | bcftools call -mv --format-fields AD -Ob -o ./variants/out_all.vcf.gz
+# bcftools mpileup -d 1000 -f /home/cat/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta ./data/*.sorted.bam | bcftools call -mv -Ob --output-type b | bcftools annotate --annotations FORMAT/AD -o ./variants/out_all.vcf.gz -Oz
+
+
+bcftools mpileup -d 1000 -f /home/cat/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta ../diabetes/bam_files/*.sorted.bam | bcftools call -p 0.2 -mv -Ob -o ./variants/out_p02.vcf.gz 
+ 
 tabix ./variants/out_all.vcf.gz
 
 bcftools view -i 'TYPE="indel" & AN>2' ./variants/out_all.vcf.gz -o ./variants/INDEL.vcf

@@ -5,7 +5,7 @@ import pandas as pd
 from sklearn.impute import KNNImputer
 from sklearn.preprocessing import OrdinalEncoder
 
-DATA_PATH = './variants/SNP_with_id.vcf'
+DATA_PATH = './variants/SNP_p001.vcf'
 rs_max_missing = 30
 sample_max_missing = 40
 
@@ -35,10 +35,15 @@ def fill_categorical(Cat_data):
     return df_decoded
 
 
-def read_vcf(data_path):
-    df = pd.read_csv(data_path, delimiter=' ')
+def read_vcf(data_path, raw_vcf=True):
+    if raw_vcf:
+        df = pd.read_csv(data_path, delimiter='	', skiprows=733)
+        cols = df.iloc[:,0] + '_' + df.iloc[:, 1].astype(str)
+    else:
+        df = pd.read_csv(data_path, delimiter=' ')
 
-    df = df[['[3]ID',*df.columns.to_list()[9:]]]
+    df = df[['ID',*df.columns.to_list()[9:]]]
+    df.ID = cols
 
     def trans_col(col):
         try:
