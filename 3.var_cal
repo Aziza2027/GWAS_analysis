@@ -3,7 +3,7 @@
 REFERENCE="/home/cat/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta"
 
 # bcftools mpileup --annotate AD,DP -f $REFERENCE ./data/*.sorted.bam | bcftools call -mv -Ob -o ./variants/out_all.vcf.gz
-gatk HaplotypeCaller --native-pair-hmm-threads 14 -R ~/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta $(ls ./data/*sorted.bam | awk '{printf "-I %s ", $0}') --intervals intervals.list -O ./variants/out.vcf
+gatk HaplotypeCaller --native-pair-hmm-threads 14 -R ~/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta $(ls ../gwas_reannot/data/*sorted.bam | awk '{printf "-I %s ", $0}') --intervals intervals.list -O ./variants/out.vcf
 # --min-prungining 0
 bcftools view -i 'TYPE="indel" & AN>2' ./variants/out.vcf -o ./variants/INDEL.vcf
 bcftools view -e 'TYPE="indel" | AN<2' ./variants/out.vcf -o ./variants/snp.vcf
