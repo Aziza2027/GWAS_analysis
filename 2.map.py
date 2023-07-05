@@ -1,3 +1,5 @@
+#gatk HaplotypeCaller -R ~/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta $(ls *sorted.bam | awk '{printf "-I %s ", $0}') -O out_test.vcf
+
 import os
 
 from glob import glob
@@ -9,7 +11,9 @@ for file in glob("./data/*_trimmed_R1*"):
     base = file.split("_trimmed_R1")[0]
     
     # Map the reads to the reference genome
-    os.system(f"bwa mem {reference} {base}_trimmed_R1.fastq.gz {base}_trimmed_R2.fastq.gz |samtools sort -o {base}.sorted.bam")
+    rgid = base.split('/')[-1].split('_')[0]
+    com = fr"bwa mem -t 12 {reference} {base}_trimmed_R1.fastq.gz {base}_trimmed_R2.fastq.gz -R '@RG\tID:{rgid}\tSM:{rgid}\tLB:Library1\tPL:illumina\tPU:PlatformUnit1' |samtools sort -o {base}.sorted.bam"
+    os.system(com)
 
     # index BAM file
     os.system(f"samtools index {base}.sorted.bam")
