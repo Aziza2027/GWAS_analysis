@@ -1,0 +1,10 @@
+#! /usr/bin/bash
+
+REFERENCE="/home/cat/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta"
+
+# bcftools mpileup --annotate AD,DP -f $REFERENCE ./data/*.sorted.bam | bcftools call -mv -Ob -o ./variants/out_all.vcf.gz
+# gatk HaplotypeCaller --native-pair-hmm-threads 14 -R ~/database/reference/GCF_000001405.40_GRCh38.p14_genomic.fasta $(ls ../gwas_reannot/data/*sorted.bam | awk '{printf "-I %s ", $0}') -O ./variants/out.vcf
+# --min-prungining 0
+bcftools view -i 'AN>240' ./variants/out.vcf -o ./variants/out2.vcf
+rm ./variants/out.vcf 
+mv ./variants/out2.vcf ./variants/out.vcf 

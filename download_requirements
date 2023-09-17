@@ -1,0 +1,5 @@
+sudo apt install fastp
+sudo apt install samtools
+sudo apt install bwa
+sudo apt install tabix
+sudo apt install bcftools

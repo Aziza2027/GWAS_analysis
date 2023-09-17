@@ -1,0 +1,4 @@
+awk -F'\t' '{ print $1, $2, $3, $4, $5, $6, $7, substr($8, 1, 20) }' SNP_annotated_only_with_id.vcf
+
+awk -F'\t' '$3 == "." { print $1, $2, $3, $4, $5, $6, $7, substr($8, 1, 20) }' ../missing 
+
