@@ -6,4 +6,4 @@ bcftools view -e 'ID="."' ./variants/annotated.vcf > ./variants/annotated_only_w
 bcftools query -H -f '%CHROM %POS  %ID  %REF  %ALT %INFO/GENEINFO [ %TGT]\n' ./variants/annotated_only_with_id.vcf -o ./variants/with_id.vcf
 # rm ./variants/annotated_only_with_id.vcf
 
-# python 5.fill_missing.pygit remote add origin 
+python 5.fill_missing.py

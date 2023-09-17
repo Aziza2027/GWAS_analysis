@@ -1,12 +1,13 @@
 
 import os
+import sys
 import numpy as np
 import pandas as pd
 
 from sklearn.impute import KNNImputer
 from sklearn.preprocessing import OrdinalEncoder
 
-DATA_PATH = './variants/SNP_with_id.vcf'
+DATA_PATH = './variants/with_id.vcf'
 rs_max_missing = 30 # percent
 sample_max_missing = 40 # percent
 
@@ -60,19 +61,19 @@ def read_vcf(data_path, raw_vcf=True):
     df = df.T.rename(columns=df.T.iloc[0]).drop(df.T.index[0]) 
     df = df.replace(['./.'], [np.nan]).apply(lambda x: x.str.replace('/', ''))
 
-    df.to_csv('./variants/original.csv')
+    df.to_csv('./variants/all_original.csv')
     return df
 
 
 df = read_vcf(DATA_PATH)
 
-missing_rate_samples = ((df.isna().mean(axis=1) * 100).round(2)).sort_values(ascending=False)
 missing_rate_snps = ((df.isna().mean(axis=0) * 100).round(2)).sort_values(ascending=False)
-
 cols = missing_rate_snps[missing_rate_snps<rs_max_missing].index
 df = df.loc[:, cols[::-1]]
 
+missing_rate_samples = ((df.isna().mean(axis=1) * 100).round(2)).sort_values(ascending=False)
 rows = list(missing_rate_samples[missing_rate_samples<sample_max_missing].index)
+
 if 'Undetermined' in rows:
     rows.remove('Undetermined')
 
@@ -81,17 +82,19 @@ df = df.loc[rows[::-1], :]
 
 filled = fill_categorical(df)
 
-
-
 def check_alleles(x):
     l = len(set(list(''.join(x))))
     s = x.value_counts().shape[0]
-    if l >= 3 or s > 3:
+    gent_length = list(set(x.value_counts().index.str.len()))
+    if l >= 3 or s > 3 or len(gent_length)>1 or gent_length[0] != 2:
         return x.name
     
 
 war_rs = filled.apply(check_alleles).unique()[1:]
-filled.drop(columns=war_rs).to_csv('./variants/filled.csv')
+filled.drop(columns=war_rs).to_csv('./variants/all_filled.csv')
+filled[war_rs].to_csv('./variants/removed.csv')
+print(filled[war_rs].shape)
+
 print('\nWARNING!\nFollowing columns have more than 3 alleles and they have been removed from final version of data:',*war_rs, sep='\n\t')
 
 print('Total number of samples:', filled.shape[0])
